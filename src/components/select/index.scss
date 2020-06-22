@@ -1,0 +1,26 @@
+.select{
+    width: 100%;
+    position: relative;
+    padding-bottom: 16px;
+    &-title{
+        margin-bottom:5px;
+        display: inline-block;
+    }
+    &-error{
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        font-size: 10px;
+        color: #ff0000;
+    }
+    .custom-select{
+        &--error{
+            border-color: #ff0000;
+            &:focus{
+                border-color: rgba(255, 0, 0, 0.322);
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, .25);
+            }
+        }
+    }
+}

@@ -6,6 +6,8 @@ module.exports = {
     rules: {
         "@typescript-eslint/semi": "off",
         "@typescript-eslint/indent": ["error", 4],
+        "linebreak-style": [0, "windows"],
+        "max-len": ["error", { "code": 200 }]
     },
     overrides: [
         { 
