@@ -1,4 +1,4 @@
-const LabelsObj = {
+const LabelsObj:PersonLabels = {
     name: 'Имя',
     lastname: 'Фамилия',
     email: 'Email',
@@ -9,6 +9,12 @@ const LabelsObj = {
     emailsend: 'Рекламная рассылка по э-почте',
     smssend: 'Рекламная рассылка по смс',
     uezd: 'Уезд',
+    status: 'Статус',
+    regestrationIp: 'IP регистрации',
+    regestrationRegion: 'Регион регистрации',
+    language: 'Язык',
+    invited: 'Пригласил друзей',
+    origin: 'Источник',
 }
 
 export default LabelsObj;

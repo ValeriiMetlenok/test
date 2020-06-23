@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 type Input = {
     type: string,
-    label: string,
+    label?: string,
     placeholder: string,
     name: string,
     onChange: any,
@@ -18,7 +18,7 @@ const Input:React.FC<Input> = ({
     const cl = cn('form-control', { 'form-control--error': error && true })
     return (
         <label className="input" htmlFor={name}>
-            <span className="input-title">{label}</span>
+            { label && <span className="input-title">{label}</span> }
             <input id={name} type={type} className={cl} name={name} placeholder={placeholder} onChange={onChange} value={inputvalue} />
             <div className="input-error">{error}</div>
         </label>

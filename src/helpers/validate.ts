@@ -10,7 +10,6 @@ type Errors = {
 }
 
 const validate = (values: any) => {
-    console.log(values)
     const errors:Errors = {};
 
     if (!values.name) {

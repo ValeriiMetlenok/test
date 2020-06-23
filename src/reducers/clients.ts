@@ -7,6 +7,19 @@ const initialState = {
 
 const Clients = (state = initialState, action:any) => {
     switch (action.type) {
+        case ActionTypes.PERSON_GET:
+            return {
+                ...state,
+                data: [
+                    ...state.data,
+                    ...action.payload,
+                ],
+            }
+        case ActionTypes.PERSON_REMOVE:
+            return {
+                ...state,
+                data: state.data.filter((item: Person) => item.id !== action.payload),
+            }
         case ActionTypes.PERSON_LOADING:
             return {
                 ...state,
@@ -18,6 +31,15 @@ const Clients = (state = initialState, action:any) => {
                 ...state,
                 data: [
                     ...state.data,
+                    action.payload,
+                ],
+            }
+
+        case ActionTypes.PERSON_UPDATE:
+            return {
+                ...state,
+                data: [
+                    ...state.data.filter((item: Person) => item.id !== action.payload.id),
                     action.payload,
                 ],
             }

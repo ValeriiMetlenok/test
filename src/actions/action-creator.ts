@@ -1,6 +1,10 @@
 import * as ActionTypes from './action-types';
 
-export const PersonCreate = (value:any) => ({
+export const PersonGet = (value:Person[]) => ({
+    type: ActionTypes.PERSON_GET,
+    payload: value,
+})
+export const PersonCreate = (value:Person) => ({
     type: ActionTypes.PERSON_CREATE,
     payload: value,
 })
@@ -10,7 +14,7 @@ export const PersonUpdate = (value:any) => ({
     payload: value,
 })
 
-export const PersonRemove = (value:any) => ({
+export const PersonRemove = (value:string) => ({
     type: ActionTypes.PERSON_REMOVE,
     payload: value,
 })

@@ -1,0 +1,22 @@
+.client-list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    &__icon{
+        line-height: 0 !important;
+        margin-right: 20px;
+        &:last-child{
+            margin-right: 0px;
+        }
+        svg {
+            margin-right: 10px;
+        }
+        &--remove{
+            svg {
+                fill:#fff;
+                stroke: #fff
+            }
+        }
+    }
+}

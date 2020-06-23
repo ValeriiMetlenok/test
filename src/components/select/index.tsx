@@ -3,7 +3,7 @@ import './index.scss';
 import cn from 'classnames';
 
 type Select = {
-    label: string,
+    label?: string,
     name: string
     values: SelectOption[],
     value: any,
@@ -22,8 +22,8 @@ const Select:React.FC<Select> = ({
     const cl = cn('custom-select', { 'custom-select--error': error && true })
     return (
         <label className="select" htmlFor={name}>
-            <span className="select-title">{label}</span>
-            <select name={name} id={name} className={cl} onChange={onChange} defaultValue={defaultValue}>
+            { label && <span className="select-title">{label}</span> }
+            <select name={name} id={name} className={cl} onChange={onChange} value={defaultValue}>
                 { values.map(({ value, title }) => <option key={value} value={value}>{title}</option>) }
             </select>
             <div className="select-error">{error}</div>

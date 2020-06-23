@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import {
     Switch,
     Route,
 } from 'react-router-dom';
 import Header from './components/header';
-import UserList from './components/userlist';
+import ClientList from './components/clientlist';
 import UserForm from './components/userform';
+import { GetPersons } from './actions/actions';
 
-function App() {
+const App:React.FC<{getPersons: Function}> = ({ getPersons }) => {
+
+    useEffect(() => {
+        getPersons()
+    }, [getPersons])
+
     return (
         <>
             <Header />
             <div className="container">
                 <Switch>
                     <Route exact path="/">
-                        <UserList />
+                        <ClientList />
                     </Route>
                     <Route path="/userform">
                         <UserForm />
@@ -25,4 +32,10 @@ function App() {
     );
 }
 
-export default App;
+export default connect(
+    () => ({
+    }),
+    (dispatch) => ({
+        getPersons: () => dispatch<any>(GetPersons()),
+    }),
+)(App);
