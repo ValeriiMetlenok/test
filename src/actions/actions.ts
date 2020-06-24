@@ -91,7 +91,28 @@ export const GetComments = (value:string) => (dispatch: any) => {
                     },
                     {
                         id: 'vnbxvx',
-                        createdAt: 1592994490849,
+                        createdAt: 159299590849,
+                        author: 'Test',
+                        message: 'Информационное сообщение',
+                        status: 'information',
+                    },
+                    {
+                        id: 'tyuiwqegh',
+                        createdAt: 1591994482495,
+                        author: 'Система',
+                        message: 'Системное сообщение',
+                        status: 'system',
+                    },
+                    {
+                        id: 'vnbxv4231x',
+                        createdAt: 1592993490849,
+                        author: 'Test',
+                        message: 'Информационное сообщение',
+                        status: 'information',
+                    },
+                    {
+                        id: 'xv4231x',
+                        createdAt: 1592934490849,
                         author: 'Test',
                         message: 'Информационное сообщение',
                         status: 'information',
@@ -99,7 +120,8 @@ export const GetComments = (value:string) => (dispatch: any) => {
                 ],
             }
             dispatch(ActionCreators.CommentLoading(false))
-            dispatch(ActionCreators.CommentGet(data))
+            const l = value === 'h98rmmYXy' ? { [value]: [], ...data } : { ...data, [value]: [] }
+            dispatch(ActionCreators.CommentGet(l))
         }).catch(() => {
             dispatch(ActionCreators.CommentLoading(false))
         })
@@ -138,6 +160,7 @@ export const CreateSystemComment = (newData:Person, oldData:Person) => (dispatch
 
     const data:any = obj.map((item:any) => ({
         status: 'system',
+        author: 'Система',
         // @ts-ignore
         message: `Администратор изменил ${LabelsObj[item.field].toLowerCase()} c ${item.old} на ${item.new}`,
     }))
@@ -150,7 +173,6 @@ export const CreateSystemComment = (newData:Person, oldData:Person) => (dispatch
             ...item,
             id: MakeID(6),
             createdAt: Date.now(),
-            author: 'Test2',
             personId: newData.id,
         }))
         dispatch(ActionCreators.CommentCreate({ personId: newData.id, comments: newComments }))

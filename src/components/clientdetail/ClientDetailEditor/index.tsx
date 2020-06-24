@@ -210,7 +210,7 @@ const ClientDetailEditor:React.FC<{data: Person, formik: any}> = ({ data, formik
                         values={language}
                         onChange={formik.handleChange}
                         value={formik.values.language}
-                        error={formik.errors.uezd}
+                        error={formik.errors.language}
                     />
                 </div>
             </div>

@@ -33,11 +33,13 @@ const CommentForm:React.FC<CommentForm> = ({
 
     const formik = useFormik<{
         message: string,
-        status: 'cammon' | 'information' | 'system' | 'important'
+        status: 'cammon' | 'information' | 'system' | 'important',
+        author: string,
     }>({
         initialValues: {
             message: data?.message ?? '',
             status: data?.status ?? 'cammon',
+            author: 'Test2',
         },
         validate,
         onSubmit: (values: any) => {
@@ -65,17 +67,16 @@ const CommentForm:React.FC<CommentForm> = ({
                     })
                 })
             } else {
-                const dataComment: CommentItem = {
-                    ...values,
-                    id: MakeID(6),
-                    createdAt: Date.now(),
-                    author: 'Test2',
-                }
                 loadingComment(true)
                 fetch('/', {
                     method: 'POST',
                     body: JSON.stringify({ personId, comments: [values] }),
                 }).then(() => {
+                    const dataComment: CommentItem = {
+                        ...values,
+                        id: MakeID(6),
+                        createdAt: Date.now(),
+                    }
                     loadingComment(false)
                     addComment({ personId, comments: [dataComment] })
                     setResultModal({

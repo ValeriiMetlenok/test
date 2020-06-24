@@ -29,7 +29,7 @@ const CommentItem:React.FC<{comment: CommentItem, personId: string, removeCommen
         <>
             <Alert variant={status} className="alert alert--comment">
                 <div className="row" key={comment.id}>
-                    <div className="col-md-2">{data.toTimeString()}</div>
+                    <div className="col-md-2">{data.toString()}</div>
                     <div className="col-md-1">{comment.author}</div>
                     <div className="col-md-7">
                         {comment.message}

@@ -1,24 +1,25 @@
 import * as ActionTypes from '../actions/action-types';
 
-const initialState = {
+const initialState:{loading: boolean; data: [] | undefined} = {
     loading: false,
-    data: [],
+    data: undefined,
 }
 
 const Clients = (state = initialState, action:any) => {
+    const data = state.data ? state.data : []
     switch (action.type) {
         case ActionTypes.PERSON_GET:
             return {
                 ...state,
                 data: [
-                    ...state.data,
+                    ...data,
                     ...action.payload,
                 ],
             }
         case ActionTypes.PERSON_REMOVE:
             return {
                 ...state,
-                data: state.data.filter((item: Person) => item.id !== action.payload),
+                data: data.filter((item: Person) => item.id !== action.payload),
             }
         case ActionTypes.PERSON_LOADING:
             return {
@@ -30,7 +31,7 @@ const Clients = (state = initialState, action:any) => {
             return {
                 ...state,
                 data: [
-                    ...state.data,
+                    ...data,
                     action.payload,
                 ],
             }
@@ -39,7 +40,7 @@ const Clients = (state = initialState, action:any) => {
             return {
                 ...state,
                 data: [
-                    ...state.data.filter((item: Person) => item.id !== action.payload.id),
+                    ...data.filter((item: Person) => item.id !== action.payload.id),
                     action.payload,
                 ],
             }

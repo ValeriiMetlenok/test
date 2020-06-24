@@ -13,7 +13,6 @@ import ErrorRoute from './components/ErrorRoute';
 import { GetPersons } from './actions/actions';
 
 const App:React.FC<{getPersons: Function}> = ({ getPersons }) => {
-
     useEffect(() => {
         getPersons()
     }, [getPersons])
