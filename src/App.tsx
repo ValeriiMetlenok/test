@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import {
     Switch,
     Route,
+    Redirect,
 } from 'react-router-dom';
 import Header from './components/header';
 import ClientList from './components/clientlist';
 import UserForm from './components/userform';
+import Comments from './components/comments';
+import ErrorRoute from './components/ErrorRoute';
 import { GetPersons } from './actions/actions';
 
 const App:React.FC<{getPersons: Function}> = ({ getPersons }) => {
@@ -26,6 +29,9 @@ const App:React.FC<{getPersons: Function}> = ({ getPersons }) => {
                     <Route path="/userform">
                         <UserForm />
                     </Route>
+                    <Route exact path="/comments/:id" component={Comments} />
+                    <Route path="/404" component={ErrorRoute} />
+                    <Redirect to="/404" />
                 </Switch>
             </div>
         </>

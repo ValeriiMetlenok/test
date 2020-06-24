@@ -29,12 +29,6 @@ const uezd: { title: string, value: string }[] = [
     },
 ]
 
-type ResultModal = {
-    show: boolean,
-    status: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined,
-    text: string,
-} | undefined
-
 const UserForm: React.FC<{ createPerson: Function, loading: boolean, loadingPerson: Function }> = ({ createPerson, loadingPerson, loading }) => {
     const [resultModal, setResultModal] = useState<ResultModal>(undefined)
 

@@ -1,3 +1,9 @@
+type ResultModal = {
+    show: boolean,
+    status: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined,
+    text: string,
+} | undefined
+
 type PersonForm = {
     name: string,
     lastname: string,
@@ -38,4 +44,16 @@ type PersonLabels = {
     language: string;
     invited: string;
     origin: string;
+}
+
+type CommentItem = {
+    id: string,
+    createdAt: number,
+    author: string,
+    message: string,
+    status: 'cammon' | 'information' | 'system' | 'important',
+}
+
+interface CommentObject {
+    [key: string]: CommentItem[] | []
 }

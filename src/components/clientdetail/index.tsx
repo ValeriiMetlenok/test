@@ -7,9 +7,16 @@ import { useFormik } from 'formik'
 import ClientDetailContent from './ClientDetailContent'
 import ClientDetailEditor from './ClientDetailEditor'
 import validate from '../../helpers/validate';
-import { UpdatePerson, LoadingPerson } from '../../actions/actions'
+import { UpdatePerson, LoadingPerson, CreateSystemComment } from '../../actions/actions'
 
-type ClientDetail = { data: Person, handleShow: Function, updatePerson: Function, loadingPerson: Function, loading:boolean }
+type ClientDetail = {
+    data: Person,
+    handleShow: Function,
+    updatePerson: Function,
+    loadingPerson: Function,
+    loading:boolean,
+    addSystemComment: Function
+}
 
 type AlertObj = {
     status: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined,
@@ -17,7 +24,7 @@ type AlertObj = {
 }
 
 const ClientDetail:React.FC<ClientDetail> = ({
-    data, handleShow, updatePerson, loadingPerson, loading,
+    data, handleShow, updatePerson, loadingPerson, loading, addSystemComment,
 }) => {
     const [showEditor, setShowEditor] = useState(false)
     const [showAlert, setShowAlert] = useState<AlertObj | undefined>(undefined)
@@ -53,6 +60,7 @@ const ClientDetail:React.FC<ClientDetail> = ({
                     status: 'success',
                     text: 'Данные отредактированы',
                 })
+                addSystemComment(updatedData, data)
             }).catch(() => {
                 setShowAlert({
                     status: 'danger',
@@ -129,5 +137,6 @@ export default connect(
     (dispatch) => ({
         loadingPerson: (value: boolean) => dispatch<any>(LoadingPerson(value)),
         updatePerson: (value: Person) => dispatch<any>(UpdatePerson(value)),
+        addSystemComment: (newData: Person, oldData:Person) => dispatch<any>(CreateSystemComment(newData, oldData)),
     }),
 )(ClientDetail)
